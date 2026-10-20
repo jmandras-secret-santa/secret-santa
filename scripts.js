@@ -1,3 +1,6 @@
+var tableTitleYear = document.querySelector("#tableTitleYear")
+tableTitleYear.innerHTML = new Date().getFullYear()
+
 var addParticipantButton = document.querySelector("#addParticipantsButton")
 var tbodyContent = document.querySelector("tbody")
 
