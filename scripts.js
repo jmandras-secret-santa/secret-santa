@@ -10,10 +10,15 @@ function addUserToTable() {
     var participant = document.querySelector("#participant").nodeValue
     var contact = document.querySelector("#contact").nodeValue
     
-    var participantCell = `<td>${participant}</td>`
-    var contactCell = `<td>${contact}</td>`
+    var participantCell = document.createElement('td')
+    participantCell.textContent = participant
+    var contactCell = document.createElement('td')
+    contactCell.textContent = contact
+    //var removeParticipantCell = `<td></td>`
 
-    var tableData = `<tr>${participantCell}${contactCell}</tr>`
+    var tableData = document.createElement('tr')
+    tableData.appendChild(participantCell)
+    tableData.appendChild(contactCell)
 
     tbodyContent.appendChild(tableData)
 }
