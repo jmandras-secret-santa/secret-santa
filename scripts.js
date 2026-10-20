@@ -7,14 +7,13 @@ var tbodyContent = document.querySelector("tbody")
 addParticipantButton.addEventListener("click", addUserToTable)
 
 function addUserToTable() {
-    var tableData = ""
-    var participant = document.querySelector("#participant")
-    var contact = document.querySelector("#contact")
+    var participant = document.querySelector("#participant").nodeValue
+    var contact = document.querySelector("#contact").nodeValue
     
     var participantCell = `<td>${participant}</td>`
     var contactCell = `<td>${contact}</td>`
 
-    tableData = `<tr>${participantCell}${contactCell}</tr>`
+    var tableData = `<tr>${participantCell}${contactCell}</tr>`
 
     tbodyContent.appendChild(tableData)
 }
