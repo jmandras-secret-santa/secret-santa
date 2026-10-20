@@ -7,26 +7,35 @@
     <link rel="stylesheet" type="text/css" href="styles.css" media="screen">
 </head>
 <body>
-    <nav>
-        <button>Add Participants</button>
-        <button>Pair Participants</button>
-        <button>Send Notification</button>
-    </nav>
+    <div>
+        <h1>Imagine Wagons Discord Secret Santa</h1>
+        <br>
+        <nav>
+            <button id="addParticipantsButton">Add Participants</button>
+            <button id="pairParticipantsButton">Pair Participants</button>
+            <button id="sendNotificationButton">Send Notification</button>
+        </nav>
+    </div>
+    <br>
     <div>
         <div>
             <form>
-                <input type="text"/>
-                <input type="text"/>
+                <input type="text" id="participant"/>
+                <input type="text" id="contact"/>
             </form>
         </div>
-        <div>
-            <table>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>Participants for Imagine Wagons Discord Secret Santa <p id="tableTitleYear"></p></tr>
                 <tr>
                     <td>Participant's Name</td>
                     <td>Participant's Email</td>
                 </tr>
-            </table>
-        </div>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 </body>
 <script src="scripts.js"></script>
