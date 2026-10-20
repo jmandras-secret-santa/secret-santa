@@ -14,7 +14,8 @@ function addUserToTable() {
     participantCell.textContent = participant
     var contactCell = document.createElement('td')
     contactCell.textContent = contact
-    //var removeParticipantCell = `<td></td>`
+    var removeParticipantCell = document.createElement('td')
+    removeParticipantCell.textContent = "trash can icon for deleting row"
 
     var tableData = document.createElement('tr')
     tableData.appendChild(participantCell)
