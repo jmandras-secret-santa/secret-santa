@@ -7,37 +7,16 @@
     <link rel="stylesheet" type="text/css" href="styles.css" media="screen">
 </head>
 <body>
+    <h1>Imagine Wagons Discord Secret Santa</h1>
+    <br>
     <div>
-        <h1>Imagine Wagons Discord Secret Santa</h1>
+        <textarea id="currentParticipants" placeholder="Enter list of participants... (Jason, Shuan, ...)"></textarea>
         <br>
-        <nav>
-            <button id="addParticipantsButton">Add Participants</button>
-            <button id="pairParticipantsButton">Pair Participants</button>
-            <button id="sendNotificationButton">Send Notification</button>
-        </nav>
+        <textarea id="previousPairings" placeholder="Enter list of participants and their previous match... (Jason: Shuan)"></textarea>
     </div>
-    <br>
     <div>
-        <div>
-            <form>
-                Participant: <input type="text" id="participant"/>
-                Contact: <input type="text" id="contact"/>
-            </form>
-        </div>
-    </div>
-    <br>
-    <div>
-        <table>
-            <thead>
-                <tr>Participants for Imagine Wagons Discord Secret Santa <p id="tableTitleYear"></p></tr>
-                <tr>
-                    <td>Participant's Name</td>
-                    <td>Participant's Email</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <button id="pairParticipantsButton">Pair Participants</button>
+        <button id="sendNotificationButton">Send Notification</button>
     </div>
 </body>
 <script src="scripts.js"></script>
