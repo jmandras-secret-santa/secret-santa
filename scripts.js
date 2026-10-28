@@ -53,8 +53,8 @@ function generateSecretSanta(participants, history = {}) {
 }
 
 // ------Example usage------
-let currentParticipants = document.querySelector("#currentParticipants")[0].getValue();
-let previousPairings = document.querySelector("#previousPairings")[0].getValue();
+let currentParticipants = document.querySelector("#currentParticipants").value;
+let previousPairings = document.querySelector("#previousPairings").value;
 let pairButton = document.querySelector("pairParticipantsButton")
 pairButton.addEventListener("click", () => {
     try {
