@@ -8,10 +8,14 @@ for(let i = 0; i < listOfParticipants.length; i++) {
 }
 
 let previousPairings = document.querySelector("#previousPairings").value;
-let previousPairingsArray = [];
+let previousPairingsMap = new Map();
 let listOfPreviousPairings = previousPairings.split(",");
 for(let i = 0; i < listOfPreviousPairings.length; i++) {
-    previousPairingsArray.push(listOfPreviousPairings[i].replaceAll(" ", ""));
+    listOfPreviousPairings[i] = listOfPreviousPairings[i].replaceAll(" ", "");
+    let previousPairsData = listOfPreviousPairings[i].split(":");
+    let participant = previousPairsData[0];
+    let previousPerson = previousPairsData[1];
+    emailsMap.set(participant, previousPerson);
 }
 
 let pairButton = document.querySelector("#pairParticipantsButton");
@@ -34,18 +38,22 @@ notificationButton.addEventListener("click", async () => {
 
     //map participants to their emails
     const participantEmails = document.querySelector("#participantEmails").value;
-    let emailsArray = [];
+    let emailsMap = new Map();
     let listOfParticipantEmails = participantEmails.split(",");
     for(let i = 0; i < listOfParticipantEmails.length; i++) {
-        emailsArray.push(listOfParticipantEmails[i].replaceAll(" ", ""));
+        listOfParticipantEmails[i] = listOfParticipantEmails[i].replaceAll(" ", "");
+        let participantData = listOfParticipantEmails[i].split(":");
+        let name = participantData[0];
+        let email = participantData[1];
+        emailsMap.set(name, email);
     }
-    console.log(emailsArray);
+    console.log(emailsMap);
 
     alert("Sending emails... Please do not close the page.");
 
     for(const [giver, recipient] of Object.entries(globalAssignments)) {
-        const emailTarget = emailsArray[giver];
-        console.log(giver, emailsArray[giver], emailTarget)
+        const emailTarget = emailsArray.get(giver);
+        console.log(giver, emailsArray.get(giver), emailTarget)
 
         const templateParams = {
             email: emailTarget,
@@ -99,6 +107,7 @@ function generateSecretSanta(participants, previousPairs) {
             const isSelf = giver === recipient;
 
             //Rule 2: Cannot buy for previous recipient (skipped if new participant)
+            console.log(previousPairs[giver])
             const isPreviousMatch = previousPairs[giver] === recipient;
             console.log(isSelf, isPreviousMatch)
             if(isSelf) {
