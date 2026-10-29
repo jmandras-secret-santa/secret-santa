@@ -53,7 +53,7 @@ notificationButton.addEventListener("click", async () => {
         };
 
         try {
-            await emailjs.send('service_efa2thc', 'template_gmv1xlj', templateParams);
+            await emailjs.send('service_efa2thc', 'template_06bcp7m', templateParams);
             console.log(`Notification successfully sent to ${giver}`);
         } catch (error) {
             console.error(`Failed to send email to ${giver}: `, error);
