@@ -22,8 +22,7 @@ let pairButton = document.querySelector("#pairParticipantsButton");
 pairButton.addEventListener("click", () => {
     try {
         globalAssignments = generateSecretSanta(participantsArray, previousPairingsMap);
-        console.table(globalAssignments);
-
+        
         //enable the 'send notifications' button now that pairings have been made
         document.getElementById("sendNotificationButton").disabled = false;
         alert("Pairings generated! Ready to notify participants.");
@@ -47,13 +46,11 @@ notificationButton.addEventListener("click", async () => {
         let email = participantData[1];
         emailsMap.set(name, email);
     }
-    console.log(emailsMap);
 
     alert("Sending emails... Please do not close the page.");
 
     for(const [giver, recipient] of Object.entries(globalAssignments)) {
         const emailTarget = emailsMap.get(giver);
-        console.log(giver, emailsMap.get(giver), emailTarget)
 
         const templateParams = {
             email: emailTarget,
@@ -101,15 +98,13 @@ function generateSecretSanta(participants, previousPairs) {
         for(let i = 0; i < participants.length; i++) {
             const giver = participants[i];
             const recipient = recipients[i];
-            console.log(giver, recipient)
-
+            
             //Rule 1: Cannot buy for yourself
             const isSelf = giver === recipient;
 
             //Rule 2: Cannot buy for previous recipient (skipped if new participant)
-            console.log(previousPairs.get(giver))
             const isPreviousMatch = previousPairs.get(giver) === recipient;
-            console.log(isSelf, isPreviousMatch)
+            
             if(isSelf) {
                 valid = false;
                 break;
@@ -120,9 +115,7 @@ function generateSecretSanta(participants, previousPairs) {
             }
 
             assignments[giver] = recipient;
-            console.log(assignments)
         }
-        console.log(valid)
     }
 
     //if there are pairing errors, throw an error
