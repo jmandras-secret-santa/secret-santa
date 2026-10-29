@@ -45,17 +45,17 @@ function generateSecretSanta(participants, previousPairs) {
             console.log(assignments)
         }
         console.log(valid)
-        //if there are pairing errors, throw an error
-        if(!valid) {
-            throw new Error("Could not find a valid pairing.");
-        }
+    }
+
+    //if there are pairing errors, throw an error
+    if(!valid) {
+        throw new Error("Could not find a valid pairing.");
     }
 
     //3. If all pairs pass, map and return them
     return assignments;
 }
 
-// ------Example usage------
 let currentParticipants = document.querySelector("#currentParticipants").value;
 let participantsArray = [];
 let listOfParticipants = currentParticipants.split(",");
