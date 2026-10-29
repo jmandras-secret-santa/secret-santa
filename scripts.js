@@ -45,6 +45,10 @@ function generateSecretSanta(participants, previousPairs) {
             console.log(assignments)
         }
         console.log(valid)
+        //if there are pairing errors, throw an error
+        if(!valid) {
+            throw new Error("Could not find a valid pairing.");
+        }
     }
 
     //3. If all pairs pass, map and return them
@@ -68,6 +72,10 @@ for(let i = 0; i < listOfPreviousPairings.length; i++) {
 
 let pairButton = document.querySelector("#pairParticipantsButton")
 pairButton.addEventListener("click", () => {
-    const finalPairs = generateSecretSanta(participantsArray, previousPairingsArray);
-    console.table(finalPairs);
+    try {
+        const finalPairs = generateSecretSanta(participantsArray, previousPairingsArray);
+        console.table(finalPairs);
+    } catch(error) {
+        console.error(error.message);
+    }
 });
