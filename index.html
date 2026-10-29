@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css" media="screen">
-    <script src="https://jsdelivr.net"></script> <!-- EmailJS SDK -->
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "1baDSlm-hkUttqx5f",
+            });
+        })();
+    </script>
     <script src="scripts.js" defer></script>
 </head>
 <body>

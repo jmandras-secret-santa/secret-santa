@@ -1,6 +1,4 @@
 let globalAssignments = null; // stores pairings from while loop
-//initialize EmailJS with public key
-emailjs.init("1baDSlm-hkUttqx5f");
 
 let currentParticipants = document.querySelector("#currentParticipants").value;
 let participantsArray = [];
