@@ -21,7 +21,7 @@ for(let i = 0; i < listOfPreviousPairings.length; i++) {
 let pairButton = document.querySelector("#pairParticipantsButton");
 pairButton.addEventListener("click", () => {
     try {
-        globalAssignments = generateSecretSanta(participantsArray, previousPairingsArray);
+        globalAssignments = generateSecretSanta(participantsArray, previousPairingsMap);
         console.table(globalAssignments);
 
         //enable the 'send notifications' button now that pairings have been made
