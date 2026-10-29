@@ -29,22 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let i = 0; i < participants.length; i++) {
                 const giver = participants[i];
                 const recipient = recipients[i];
-                //const previousRecipient = history[giver];
+                console.log(giver, recipient)
 
                 //Rule 1: Cannot buy for yourself
                 const isSelf = giver === recipient;
 
                 //Rule 2: Cannot buy for previous recipient (skipped if new participant)
                 const isPreviousMatch = previousPairs[giver] === recipient;
-
+                console.log(isSelf, isPreviousMatch)
                 if(isSelf || isPreviousMatch) {
                     valid = false;
                     break;
                 }
 
                 assignments[giver] = recipient;
+                console.log(assignments)
             }
-
+            console.log(valid)
             //if there are pairing errors, throw an error
             if(!valid) {
                 throw new Error("Could not find a valid pairing.");
