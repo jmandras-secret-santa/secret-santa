@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css" media="screen">
+    <script src="https://jsdelivr.net"></script> <!-- EmailJS SDK -->
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <h1>Imagine Wagons Discord Secret Santa</h1>
-    <br>
     <div>
         <p>List of Participants:</p>
         <textarea id="currentParticipants" placeholder="Enter list of participants... (Jason, Shuan, ...)"></textarea>
@@ -21,11 +22,10 @@
         <p>List of Each Participant's Email:</p>
         <textarea id="participantEmails" placeholder="Enter each participant's email address in the order listed in the participants textarea"></textarea>
     </div>
+    <br>
     <div>
         <button id="pairParticipantsButton">Pair Participants</button>
         <button id="sendNotificationButton" disabled>Send Notification</button>
     </div>
 </body>
-<script src="https://jsdelivr.net"></script> <!-- EmailJS SDK -->
-<script src="scripts.js"></script>
 </html>
