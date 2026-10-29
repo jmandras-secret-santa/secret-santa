@@ -15,7 +15,7 @@ for(let i = 0; i < listOfPreviousPairings.length; i++) {
     let previousPairsData = listOfPreviousPairings[i].split(":");
     let participant = previousPairsData[0];
     let previousPerson = previousPairsData[1];
-    emailsMap.set(participant, previousPerson);
+    previousPairingsMap.set(participant, previousPerson);
 }
 
 let pairButton = document.querySelector("#pairParticipantsButton");
