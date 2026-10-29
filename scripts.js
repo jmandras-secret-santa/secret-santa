@@ -52,8 +52,8 @@ notificationButton.addEventListener("click", async () => {
     alert("Sending emails... Please do not close the page.");
 
     for(const [giver, recipient] of Object.entries(globalAssignments)) {
-        const emailTarget = emailsArray.get(giver);
-        console.log(giver, emailsArray.get(giver), emailTarget)
+        const emailTarget = emailsMap.get(giver);
+        console.log(giver, emailsMap.get(giver), emailTarget)
 
         const templateParams = {
             email: emailTarget,
