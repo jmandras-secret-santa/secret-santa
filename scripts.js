@@ -45,12 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 assignments[giver] = recipient;
             }
 
-            //3. If all pairs pass, map and return them
+            //if there are pairing errors, throw an error
             if(!valid) {
                 throw new Error("Could not find a valid pairing.");
             }
         }
 
+        //3. If all pairs pass, map and return them
         return assignments;
     }
 
