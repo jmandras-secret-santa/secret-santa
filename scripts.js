@@ -56,6 +56,10 @@ function generateSecretSanta(participants, previousPairs) {
     return assignments;
 }
 
+let globalAssignments = null; // stores pairings from while loop
+//initialize EmailJS with public key
+emailjs.init("1baDSlm-hkUttqx5f");
+
 let currentParticipants = document.querySelector("#currentParticipants").value;
 let participantsArray = [];
 let listOfParticipants = currentParticipants.split(",");
@@ -70,12 +74,51 @@ for(let i = 0; i < listOfPreviousPairings.length; i++) {
     previousPairingsArray.push(listOfPreviousPairings[i].replaceAll(" ", ""));
 }
 
-let pairButton = document.querySelector("#pairParticipantsButton")
+let pairButton = document.querySelector("#pairParticipantsButton");
 pairButton.addEventListener("click", () => {
     try {
-        const finalPairs = generateSecretSanta(participantsArray, previousPairingsArray);
-        console.table(finalPairs);
+        globalAssignments = generateSecretSanta(participantsArray, previousPairingsArray);
+        console.table(globalAssignments);
+
+        //enable the 'send notifications' button now that pairings have been made
+        document.getElementById("#sendNotificationButton").disabled = false;
+        alert("Pairings generated! Ready to notify participants.");
     } catch(error) {
-        console.error(error.message);
+        alert.error(error.message);
     }
 });
+
+let notificationButton = document.querySelector("#sendNotificationButton");
+notificationButton.addEventListener("click", async () => {
+    if(!globalAssignments) return;
+
+    //map participants to their emails
+    const participantEmails = document.querySelector("#participantEmails").value;
+    let emailsArray = [];
+    let listOfParticipantEmails = participantEmails.split(",");
+    for(let i = 0; i < listOfParticipantEmails.length; i++) {
+        emailsArray.push(listOfParticipantEmails[i].replaceAll(" ", ""));
+    }
+    console.log(emailsArray);
+
+    alert("Sending emails... Please do not close the page.");
+
+    for(const [giver, recipient] of Object.entries(globalAssignments)) {
+        const emailTarget = emailsArray[giver];
+
+        const templateParams = {
+            email: emailTarget,
+            giver: giver,
+            recipient: recipient //the template will say "Hi {giver}, you are buying for {recipient}"
+        };
+
+        try {
+            await emailjs.send('service_efa2thc', 'template_gmv1xlj', templateParams);
+            console.log(`Notification successfully sent to ${giver}`);
+        } catch (error) {
+            console.error(`Failed to send email to ${giver}: `, error);
+        }
+    }
+
+    alert("All Secret Santa notifications have been sent anonymously");
+})
