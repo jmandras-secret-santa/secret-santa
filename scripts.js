@@ -45,6 +45,7 @@ notificationButton.addEventListener("click", async () => {
 
     for(const [giver, recipient] of Object.entries(globalAssignments)) {
         const emailTarget = emailsArray[giver];
+        console.log(giver, emailTarget)
 
         const templateParams = {
             email: emailTarget,
