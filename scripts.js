@@ -21,7 +21,7 @@ pairButton.addEventListener("click", () => {
         console.table(globalAssignments);
 
         //enable the 'send notifications' button now that pairings have been made
-        document.getElementById("#sendNotificationButton").disabled = false;
+        document.getElementById("sendNotificationButton").disabled = false;
         alert("Pairings generated! Ready to notify participants.");
     } catch(error) {
         alert(error.message);
