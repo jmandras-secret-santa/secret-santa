@@ -45,7 +45,7 @@ notificationButton.addEventListener("click", async () => {
 
     for(const [giver, recipient] of Object.entries(globalAssignments)) {
         const emailTarget = emailsArray[giver];
-        console.log(giver, emailTarget)
+        console.log(giver, emailsArray[giver], emailTarget)
 
         const templateParams = {
             email: emailTarget,
@@ -101,7 +101,11 @@ function generateSecretSanta(participants, previousPairs) {
             //Rule 2: Cannot buy for previous recipient (skipped if new participant)
             const isPreviousMatch = previousPairs[giver] === recipient;
             console.log(isSelf, isPreviousMatch)
-            if(isSelf || isPreviousMatch) {
+            if(isSelf) {
+                valid = false;
+                break;
+            }
+            else if(isPreviousMatch) {
                 valid = false;
                 break;
             }
