@@ -24,7 +24,7 @@ pairButton.addEventListener("click", () => {
         document.getElementById("#sendNotificationButton").disabled = false;
         alert("Pairings generated! Ready to notify participants.");
     } catch(error) {
-        alert.error(error.message);
+        alert(error.message);
     }
 });
 
