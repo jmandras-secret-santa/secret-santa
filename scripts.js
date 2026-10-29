@@ -107,8 +107,8 @@ function generateSecretSanta(participants, previousPairs) {
             const isSelf = giver === recipient;
 
             //Rule 2: Cannot buy for previous recipient (skipped if new participant)
-            console.log(previousPairs[giver])
-            const isPreviousMatch = previousPairs[giver] === recipient;
+            console.log(previousPairs.get(giver))
+            const isPreviousMatch = previousPairs.get(giver) === recipient;
             console.log(isSelf, isPreviousMatch)
             if(isSelf) {
                 valid = false;
